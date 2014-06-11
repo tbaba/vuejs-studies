@@ -6,5 +6,16 @@ title: Vue.js studies
   h1 Vue.js studies
 
 #demo1
-  p= "{{message}}"
   input v-model='message'
+  p= "{{message}}"
+
+#demo2
+  form action='/' v-on='submit : submit'
+    input v-model='message'
+    button type='submit'
+      Add Todo
+
+  ul
+    li v-repeat='todo: todos'
+      = "{{todo.message}}"
+      span= "{{todo.done}}"
