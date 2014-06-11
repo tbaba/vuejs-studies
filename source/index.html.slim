@@ -10,12 +10,12 @@ title: Vue.js studies
   p= "{{message}}"
 
 #demo2
-  form action='/' v-on='submit : submit'
+  form action='/' v-on='submit : addTodo'
     input v-model='message'
     button type='submit'
       Add Todo
 
   ul
     li v-repeat='todo: todos'
-      = "{{todo.message}}"
+      = "{{todo.body}}"
       span= "{{todo.done}}"

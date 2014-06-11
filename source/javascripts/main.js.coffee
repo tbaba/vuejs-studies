@@ -9,13 +9,18 @@
   app2 = exports.app2 = new Vue
     el: '#demo2'
     data:
-      todos: [
-        { message: 'Vue.jsに触れる', done: true }
-        { message: 'Vue.jsに慣れる', done: false }
-      ]
+      todos: todoStorage.fetch()
+      message: ''
+    ready: ->
+      this.$watch 'todos', (todos) ->
+        todoStorage.save(todos)
+
     methods:
-      submit: (e) ->
+      addTodo: (e) ->
         e.preventDefault()
-        dd = new Date()
-        this.todos.$set dd.getTime(), { message: this.message, done: false }
+        value = this.message and this.message.trim()
+        return if !value
+
+        this.todos.push(body: value, done: false)
+        this.message = ''
 )(window)
