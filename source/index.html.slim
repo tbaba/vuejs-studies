@@ -19,3 +19,5 @@ title: Vue.js studies
     li v-repeat='todo: todos'
       = "{{todo.body}}"
       span= "{{todo.done}}"
+      button type='submit' v-on='click : removeTodo(this)'
+        = 'Remove'

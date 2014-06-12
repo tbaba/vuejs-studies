@@ -16,11 +16,15 @@
         todoStorage.save(todos)
 
     methods:
-      addTodo: (e) ->
-        e.preventDefault()
+      addTodo: ->
         value = this.message and this.message.trim()
         return if !value
 
         this.todos.push(body: value, done: false)
         this.message = ''
+        return false
+
+      removeTodo: (todo) ->
+        this.todos.$remove(todo.$index)
+        return false
 )(window)
