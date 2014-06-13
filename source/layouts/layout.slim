@@ -8,6 +8,21 @@ html
     = stylesheet_link_tag 'all'
 
   body class= page_classes
-    == yield
+    nav.navbar.navbar-inverse.navbar-fixed-top role='navigation'
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle type='button' data-toggle='collapse' data-target='#navbar-collapse'
+            span.sr-only= "Toggle Navigation"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'Vue.js studies', '/', class: 'navbar-brand'
+
+        .collapse.navbar-collapse#navbar-collapse
+          ul.nav.navbar-nav
+            li= link_to 'Data Binding', 'data_binding.html'
+            li= link_to 'Todo List', 'todo_list.html'
+
+    .container-fluid== yield
 
     = javascript_include_tag 'all'
