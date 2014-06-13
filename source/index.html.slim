@@ -10,16 +10,17 @@ title: Vue.js studies
   p= "{{message}}"
 
 #demo2
-  form action='/' v-on='submit : addTodo'
-    input v-model='message'
-    input v-model='id' type='hidden'
-    button type='submit'
-      Add Todo
+  form action='/' v-on='submit : addTodo' role='form' class='form-lnline'
+    .form-group
+      input v-model='message' type= 'text' class='form-control'
+      input v-model='id' type='hidden' class='form-control'
+    button type='submit' class='btn btn-primary'
+      = 'Add Todo'
 
   ul
     li v-repeat='todo: todos'
-      label
+      label.checkbox-inline
         input v-model='todo.done' v-on='click : toggleTodo(this)' class='toggle' type='checkbox'
         = "{{todo.body}}"
-      button type='submit' v-on='click : removeTodo(this)'
+      button type='submit' v-on='click : removeTodo(this)' class='btn btn-danger'
         = 'Remove'
