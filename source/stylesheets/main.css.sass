@@ -1,2 +1,23 @@
 body
   margin-top: 50px
+
+#demo2
+  li
+    margin: 10px 0
+  .checkbox-inline
+    margin-right: 5px
+  .toggle
+    outline: none
+    appearance: none
+    -moz-appearance: none
+    -webkit-appearance: none
+
+    &:after
+      content: '✔'
+      color: #cccccc
+
+  .done
+    text-decoration: line-through
+
+    .toggle:after
+      color: #666666

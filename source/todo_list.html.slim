@@ -5,20 +5,23 @@ title: Todo List
 .welcome
   h1 Todo List
 
-#demo2
-  form action='/' v-on='submit : addTodo' role='form' class='form-lnline'
-    .form-group
-      input v-model='message' type= 'text' class='form-control'
-      input v-model='id' type='hidden' class='form-control'
-    button type='submit' class='btn btn-primary'
-      = 'Add Todo'
+#demo2.row
+  .col-md-9
+    form action='/' v-on='submit : addTodo' role='form' class='form-inline'
+      .form-group
+        input v-model='message' type= 'text' class='form-control'
+        input v-model='id' type='hidden' class='form-control'
+      button type='submit' class='btn btn-primary'
+        = 'Add Todo'
 
-  ul
-    li v-repeat='todo: todos'
-      label.checkbox-inline
-        input v-model='todo.done' v-on='click : toggleTodo(this)' class='toggle' type='checkbox'
-        = "{{todo.body}}"
-      button type='submit' v-on='click : removeTodo(this)' class='btn btn-danger'
-        = 'Remove'
+    ul.list-unstyled
+      li.row v-repeat='todo: todos'
+        .col-md-9
+          label class='checkbox-inline' v-class='done : todo.done'
+            input v-model='todo.done' v-on='click : toggleTodo(this)' class='toggle' type='checkbox'
+            = "{{todo.body}}"
+        .col-md-3.text-right
+          button type='submit' v-on='click : removeTodo(this)' class='btn btn-danger'
+            = 'Remove'
 
 = javascript_include_tag 'demo2'
