@@ -39,4 +39,7 @@
 
       removeTodo: (todo) ->
         new Firebase("#{exports.firebase_url}/todos/#{todo.$data.todo.id}").remove()
+
+      toggleTodo: (todo) ->
+        new Firebase("#{exports.firebase_url}/todos/#{todo.$data.todo.id}").update(done: todo.$data.todo.done)
 )(window)
