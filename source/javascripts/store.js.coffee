@@ -1,11 +1,7 @@
 ((exports) ->
   STORAGE_KEY = 'todolist-vuejs'
+  FIREBASE_URL = 'https://dazzling-fire-1988.firebaseio.com'
 
-  exports.todoStorage =
-    fetch: ->
-      console.log "fetch todos from #{STORAGE_KEY}"
-      JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-    save: (todos) ->
-      console.log "save todos to #{STORAGE_KEY}"
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+  exports.todoStorage = new Firebase("#{FIREBASE_URL}/todos")
+  exports.firebase_url = FIREBASE_URL
 )(window)

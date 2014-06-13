@@ -4,14 +4,25 @@
     data:
       message: ''
 
+  storage = exports.todoStorage
+
+  storage.on 'child_added', (snapshot) ->
+    item = snapshot.val()
+    item.id = snapshot.name()
+    app2.todos.push(item)
+
+  storage.on 'child_removed', (snapshot) ->
+    id = snapshot.name()
+    app2.todos.some (todo) ->
+      if todo.id is id
+        app2.todos.$remove(todo)
+        true
+
   app2 = exports.app2 = new Vue
     el: '#demo2'
     data:
-      todos: todoStorage.fetch()
+      todos: []
       message: ''
-    ready: ->
-      this.$watch 'todos', (todos) ->
-        todoStorage.save(todos)
 
     methods:
       addTodo: (ev) ->
@@ -19,9 +30,13 @@
         value = this.message and this.message.trim()
         return if !value
 
-        this.todos.push(body: value, done: false)
+        newTodo =
+          body: value
+          done: false
+
+        storage.push newTodo
         this.message = ''
 
       removeTodo: (todo) ->
-        this.todos.$remove(todo.$index)
+        new Firebase("#{exports.firebase_url}/todos/#{todo.$data.todo.id}").remove()
 )(window)
