@@ -6,6 +6,7 @@ html
     title= current_page.data.title || 'Vue.js studies'
 
     = stylesheet_link_tag 'all'
+    = javascript_include_tag 'all'
 
   body class= page_classes
     nav.navbar.navbar-inverse.navbar-fixed-top role='navigation'
@@ -24,5 +25,3 @@ html
             li= link_to 'Todo List', 'todo_list.html'
 
     .container-fluid== yield
-
-    = javascript_include_tag 'all'
