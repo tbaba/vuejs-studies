@@ -1,6 +1,4 @@
 ((exports) ->
-  STORAGE_KEY = 'todo-list'
-
   app1 = exports.app1 = new Vue
     el: '#demo1'
     data:
