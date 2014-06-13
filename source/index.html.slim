@@ -4,22 +4,3 @@ title: Vue.js studies
 
 .welcome
   h1 Vue.js studies
-
-#demo1
-  input v-model='message'
-  p= "{{message}}"
-
-#demo2
-  form action='/' v-on='submit : addTodo'
-    input v-model='message'
-    input v-model='id' type='hidden'
-    button type='submit'
-      Add Todo
-
-  ul
-    li v-repeat='todo: todos'
-      label
-        input v-model='todo.done' v-on='click : toggleTodo(this)' class='toggle' type='checkbox'
-        = "{{todo.body}}"
-      button type='submit' v-on='click : removeTodo(this)'
-        = 'Remove'
