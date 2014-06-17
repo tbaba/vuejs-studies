@@ -1,0 +1,17 @@
+---
+title: Component
+---
+
+.welcome
+  h1 Component
+
+#component
+  ul.nav.nav-pills
+    li v-repeat='route:routes' class='{{active : currentView == route}}'
+      = link_to '{{route}}', '#!/{{route}}'
+
+  div v-view='currentView'
+    = '<content/>'
+
+= javascript_include_tag '//www.parsecdn.com/js/parse-1.2.18.min.js'
+= javascript_include_tag 'demo5'
